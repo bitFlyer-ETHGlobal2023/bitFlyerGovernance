@@ -22,6 +22,8 @@ When a user requests the minting of an NFT, the smart contract will receive the 
 ## Interface and backend
 Combined from repo [https://github.com/bitFlyer-ETHGlobal2023/bitflyer-governance-interface](https://github.com/bitFlyer-ETHGlobal2023/bitflyer-governance-interface)
 
+<img src="./assets/mint.png"  width="1000">
+
 ## Deployed Contracts
 
 * Goerli Testnet
