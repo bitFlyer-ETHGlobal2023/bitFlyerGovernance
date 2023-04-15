@@ -12,12 +12,14 @@ contract bitFlyerGovernance is ERC721, Ownable {
     mapping (uint => uint256) public lockedAmount;
     mapping (uint => uint256) public lockedUntilTime;
     mapping (uint => string) public lockedToken;
+    mapping (address => uint) public mintedTokenId;
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
     constructor() ERC721("bitFlyerGovernance", "bFGovernance") {
+        // tokenId starts from 1.
+        _tokenIds.increment();
     }
-
 
     function setMerkleRoot(bytes32 merkleRootExternal) external onlyOwner {
         merkleRoot = merkleRootExternal;
@@ -38,6 +40,7 @@ contract bitFlyerGovernance is ERC721, Ownable {
         lockedAmount[tokenId] = amount;
         lockedUntilTime[tokenId] = timestamp;
         lockedToken[tokenId] = token;
+        mintedTokenId[msg.sender] = tokenId;
 
         // Increment tokenId
         _tokenIds.increment();
@@ -72,6 +75,14 @@ contract bitFlyerGovernance is ERC721, Ownable {
 
         // Update state
         claimed[msg.sender] = false;
+        delete lockedAmount[tokenId];
+        delete lockedUntilTime[tokenId];
+        delete lockedToken[tokenId];
+        delete mintedTokenId[msg.sender];
+    }
+
+    function getLockedAmount(address account) public view returns (uint256) {
+        return lockedAmount[mintedTokenId[account]];
     }
 
     function transferFrom(address _from, address _to, uint256 _tokenId) public override {
