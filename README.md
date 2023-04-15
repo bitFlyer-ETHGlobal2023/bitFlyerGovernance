@@ -19,6 +19,9 @@ In order to achieve proof of reserve, the exchange will create a Merkle tree, wh
 
 When a user requests the minting of an NFT, the smart contract will receive the NFT minting call and validate the input, using the Merkle proof provided by the exchange. If the validation is successful, an NFT will be minted with information about the locked assets, such as the currency and amount. This NFT can then be used on any voting platform, such as Snapshot.
 
+## Interface and backend
+Combined from repo [https://github.com/bitFlyer-ETHGlobal2023/bitflyer-governance-interface](https://github.com/bitFlyer-ETHGlobal2023/bitflyer-governance-interface)
+
 ## Deployed Contracts
 
 * Goerli Testnet
