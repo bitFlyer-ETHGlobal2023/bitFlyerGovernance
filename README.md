@@ -1,6 +1,10 @@
 # bitFlyerGovernance
 bitFlyerGovernance NFT project fot ETHGlobal Tokyo 2023.
 
+<img src="./assets/matic1.png"  width="300">
+<img src="./assets/mkr1.png"  width="300">
+<img src="./assets/btc1.png"  width="300">
+
 Our project combines proof of reserve with governance to offer a more accessible and secure way for users to participate in governance. With our NFT, users can easily vote on proposals using their exchange-held assets, without needing to worry about security or high network fees. It also provides the possibility of coins not related Ethereum to leverage the governance infrastructures in Ethereum ecosystem.
 
 ## Description
