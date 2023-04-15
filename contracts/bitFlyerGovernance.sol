@@ -8,6 +8,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract bitFlyerGovernance is ERC721, Ownable {
     bytes32 public merkleRoot;
+    string private baseURI;
     mapping (address => bool) public claimed;
     mapping (uint => uint256) public lockedAmount;
     mapping (uint => uint256) public lockedUntilTime;
@@ -23,6 +24,10 @@ contract bitFlyerGovernance is ERC721, Ownable {
 
     function setMerkleRoot(bytes32 merkleRootExternal) external onlyOwner {
         merkleRoot = merkleRootExternal;
+    }
+
+    function setBaseTokenURI(string memory _baseURI) external onlyOwner {
+        baseURI = _baseURI;
     }
         
     function mint (string calldata token, uint256 amount, uint256 timestamp, bytes32[] calldata proof) 
@@ -58,15 +63,9 @@ contract bitFlyerGovernance is ERC721, Ownable {
         _;
     }
 
-    // TODO: Update tokenURI method after backend done.
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        /*
-        string memory baseURI = "https://www.<backend>.com/metadata/";
         string memory currentToken = lockedToken[tokenId];
         return string(abi.encodePacked(baseURI, currentToken, "/", tokenId));
-        */
-
-        return "https://www.jsonkeeper.com/b/2SMS";
     }
 
     function burn(uint256 tokenId) public {
