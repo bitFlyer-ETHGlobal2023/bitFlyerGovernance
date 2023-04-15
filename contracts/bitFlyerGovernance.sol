@@ -17,8 +17,9 @@ contract bitFlyerGovernance is ERC721, Ownable {
     Counters.Counter private _tokenIds;
 
     constructor() ERC721("bitFlyerGovernance", "bFGovernance") {
+        // tokenId starts from 1.
+        _tokenIds.increment();
     }
-
 
     function setMerkleRoot(bytes32 merkleRootExternal) external onlyOwner {
         merkleRoot = merkleRootExternal;
